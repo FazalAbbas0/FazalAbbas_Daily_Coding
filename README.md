@@ -1,5 +1,5 @@
 # FazalAbbas_Daily_Coding
-# FazalAbbas_Daily_Coding
+
 
 Welcome to my daily engineering journal. As an **Agentic AI Architect**, I am committed to a "Logic-First" engineering path, moving away from "vibe coding" toward a deep, syntax-level mastery of sovereign AI systems and full-stack architecture.
 

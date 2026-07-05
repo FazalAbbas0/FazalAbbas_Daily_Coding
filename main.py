@@ -82,3 +82,50 @@ a is not b
 # membership
 3 in [1, 2, 3]
 3 not in [1, 2, 3]
+#===================================
+# Day 2 - String, Slicing, Creation and formating
+#===================================
+# Creation and escaping
+# Single Quotes: 'Hello'
+# Double Quotes: "Hello"
+# Triple Quotes: 
+"""
+Strings - span 
+"""
+'doesn\'t' # Escaping single quote
+'r C:\new\folder' # Escaping backlash
+# Indexing and slicing
+word = 'Python'
+# p  y  t  h  o  n
+# 0  1  2  3  4  5
+# Negative indexing
+# -6 -5 -4 -3 -2 -1
+word[0] # 'P'
+word[-1] # 'n'
+word[0:2] # 'Py'
+word[2:5] # 'tho'
+word[2:] # 'thon'
+word[:2] # 'Py'
+word[:] # 'Python'
+# f strings the modern standard
+name, score = "Fazal", 91.5
+f"{name}, scored {score:.1f}%" # fazal scored 91.5%
+f"{score=}" # score = 91.5 debug shorthand
+# method toolbox
+s = "Hello, World!"
+len(s)
+s.upper();
+s.lower();
+s.title();
+s.strip();
+s.title();
+s.replace("World", "Python");
+s.removeprefix("Hello, ");
+s.removeprefix("Hello, ");
+s.removesuffix("!");
+s.split(", ");
+s.partition(", ");
+s.find("World");
+s.isalnum();
+s.isalpha();
+s.isupper();

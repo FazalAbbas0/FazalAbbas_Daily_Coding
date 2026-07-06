@@ -129,3 +129,53 @@ s.find("World");
 s.isalnum();
 s.isalpha();
 s.isupper();
+# ===========================================
+# Day 3, lists, mutabality, aliasing and copies
+# =========================================
+squares = [1, 4, 9, 16, 25]
+squares[0] # 1
+squares[-1] # 25
+squares[0:3] # [1, 4, 9]
+squares[:3] # [1, 4, 9]
+squares[3:] # [16, 25]
+squares[:] # [1, 4, 9, 16, 25]
+full = squares + [36, 49, 64, 81, 100]
+# Mutability changing a list in place
+cubes = [1, 8, 27, 65, 125] # something is wrong here
+cubes[3] = 64 # replace the wrong value
+cubes.append(216) # add the cube of 6
+cubes.append(7 ** 3) # add the cube of 7
+cubes.insert(4, 4 ** 3) # insert the cube of 4 at position 4
+cubes.remove(64) # remove the cube of 4
+cubes.pop() # remove the last item
+cubes.sort() # sort the list
+cubes.reverse() # reverse the list
+#===================================================
+original = ["Red", "Green", "Blue"]
+ref = original
+copy = original[:]
+copy2 = original.copy()
+import copy as copy_module
+deep = copy_module.deepcopy(original)
+
+#==========================================
+# Delete, comprehension and nesting
+#=========================================
+a = [-1, 1, 66.25, 333, 333, 1234.5]
+del a[0] # delete the first element
+del a[2:4] # delete the third and fourth elements
+del a[:] # delete all elements
+square = [x ** 2 for x in range(10)] # list comprehension
+positive = [x for x in (-2, -1, 0, 1, 2) if x >= 0] #   list comprehension with condition
+vec = [[1,2,], [3,4]]
+flattened = [num for row in vec for num in row] # nested list comprehension
+#=========================================
+# Type - predict run drill - the aliasing gotcha live
+#========================================
+orginal = ["Red", "Green"]
+ref = original
+ref.append("Blue")
+print(original) # ['Red', 'Green', 'Blue']
+copy = original[:]
+copy.append("yellow")
+print(original) # ['Red', 'Green', 'Blue']

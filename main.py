@@ -179,3 +179,39 @@ print(original) # ['Red', 'Green', 'Blue']
 copy = original[:]
 copy.append("yellow")
 print(original) # ['Red', 'Green', 'Blue']
+#=============================================
+# Day 04 - Sets
+#============================================
+basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+# duplicate elements are automatically removed
+basket # {'apple', 'orange', 'pear', 'banana'}
+empty_set = set() # Create an empty set not dictionary
+'orange' in basket # True 0(1) membership test
+a = set('abracadabra')
+b = set('alacazam')
+a-b # difference letters in a but not in b
+a | b # union letters in a or b or both
+a & b # intersection letters in both a and b
+a ^ b # symmetric difference letters in a or b but not both
+#====================================================
+# Day -04  - The Collections module - new material
+#=====================================================
+# This sits in directly in the standard library and sits one import away and you will sit in almost every non-trivial python codbase you read. Skipping this is the kind of gap that make someone else's real code look unfamiliar every know every keyword init technicly.
+# counter - frequency counting without writing a loop
+from collections import Counter
+votes = ['py', 'js', 'py', 'go', 'py', 'js']
+tally = Counter(votes)
+# Conter({'py': 3, 'js': 2, 'go': 1})
+tally.most_common(1) # [('py', 3)]
+# Default dictionaries that never generate error on first touch
+from collections import defaultdict
+groups = defaultdict(list)
+groups['active'].append('user1')
+groups['active'].append('user2')
+# groups -> {'active': ['user1', 'user2']}
+# named tuples - a tuple with named filds, the ancestor of pydantic models
+from collections import namedtuple
+point = namedtuple('Point', ['x', 'y'])
+p = point(3, 4) 
+p.x, p.y # 3, 4          # 3,4 by name not just by index
+p[0], p[1] # 3, 4        # 3 4 still works positionaly too

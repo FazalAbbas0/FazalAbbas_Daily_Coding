@@ -215,3 +215,34 @@ point = namedtuple('Point', ['x', 'y'])
 p = point(3, 4) 
 p.x, p.y # 3, 4          # 3,4 by name not just by index
 p[0], p[1] # 3, 4        # 3 4 still works positionaly too
+#=========================================================
+# Day 05 - Dictionaries, Looping Techniques, Control Flow and matching
+#=========================================================
+#========================================================
+#          Day 05     -    Dictionaries
+#========================================================
+tel = {'jack': 4098, 'sape': 4139}
+tel['guido'] = 4127 # add a new key-value pair
+tel['jack'] # Direct access - key error if missing
+tel.get('irv')  # Safe access - returns None if missing
+tel.get('irv', 'unknown') # Safe access with default value
+del tel['sape'] # delete a key-value pair
+'guido' in tel # check if a key exists
+list(tel) # keys in insertion order
+sorted(tel) # sorted keys
+dict([('sape', 4139), ('guido', 4127), ('jack', 4098)]) # create a dictionary from a list of tuples
+squares = {x: x ** 2 for x in (2, 4, 6)} # dictionary comprehension
+#========================================================
+#        Day 05     -    Looping Techniques
+#========================================================
+knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+for k, v in knights.items():
+    print(k, v)
+
+for i, v in enumerate(['tic', 'tac', 'toe']):
+    print(i, v)
+
+questions = ['name', 'quest', 'color']
+answers = ['lancelot', 'grail', 'blue']
+for q, a in zip(questions, answers):
+    print(f'What is your {q}? It is {a}.')

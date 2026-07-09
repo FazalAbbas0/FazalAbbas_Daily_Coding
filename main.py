@@ -246,3 +246,90 @@ questions = ['name', 'quest', 'color']
 answers = ['lancelot', 'grail', 'blue']
 for q, a in zip(questions, answers):
     print(f'What is your {q}? It is {a}.')
+#======================================================================
+#      Day 06     -    Functions, *args, **kwargs and Decorators
+#===================================================================
+#                 Functions
+#===================================================================
+# Functions basics and the mutable-default trap
+def fib2():
+    "Return fibonacci series below n as list."
+    result = []
+    a, b = 0, 1
+    while a < n:
+        result.append(a)
+        a, b = b, a + b
+        return result
+def append_to(item, target=None):
+    if target is None:
+        target = []
+    target.append(item)
+    return target
+#======================================================================
+#     Day 06     -    *args, **kwargs 
+#===================================================================
+def cheeseshop(kind, *arguments, **keywords):
+    print(f'----Do you have any {kind}?')
+    for arg in arguments:
+        print(arg)
+    for key, val in keywords.items():
+        print(f'{key}: {val}')
+# unpacking the other direction
+args = [3, 6]
+list(range(*args)) # [3, 4, 5]
+d = {"voltage": high, "state": "dead"}
+def parrot(voltage, state): pass
+parrot(**d) # equivalent to parrot(voltage=high, state='dead')
+#======================================================================
+#   Day 06     -    Positional only and keywords only parameters
+#===================================================================
+def combined(pos_only, /, standard, *, kwd_only):
+    # pos_only , must be passed positionally
+    # Standard, positional or keyword
+    # kwd_only, must be passed as keyword
+    pass
+#======================================================================
+#   Day 06     -    Lambada and Annotations
+#===================================================================
+pairs = [(1, 'one'), (2, 'two')]
+pairs.sort(key=lambda pair: pair[1])
+def f(ham: str, eggs: str = 'eggs') -> str:
+    """concise one-line summary."""
+    return ham + ' and ' + eggs
+#======================================================================
+#  Day 06     -    Decorators
+#===================================================================
+# The core idea built from nothing
+def shout(func):
+    def wrapper(*args, **kwargs):
+        return result.upper()
+    return wrapper
+
+def greet(name):
+    return f'hello {name}'
+greet = shout(greet) # manualy wrapping this is what @ does
+greet('fazal') # 'HELLO FAZAL'
+
+def shout (func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        return result.upper()
+    return wrapper
+@shout
+def greet(name):
+    return f' hellow {name}'
+greet('fazal') # 'HELLO FAZAL'
+# Decorators that take their own arguments - the @ app.get('/path')shape
+def repeate(times):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(times):
+                func(*args, **kwargs)
+            return wrapper
+        return decorator
+    
+@ repeat(times=3)
+def announce():
+    print('deployed')
+
+announce() # prints 'deployed' three times

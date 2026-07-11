@@ -333,3 +333,54 @@ def announce():
     print('deployed')
 
 announce() # prints 'deployed' three times
+#==========================================================================
+# Day 07     -    Modules, Packages, File I/O and Exception handling
+#=======================================================================
+#           Day -07     -    Modules and Imoprts
+#=========================================================================
+import math
+math.sqrt(16) # 4.0
+
+from math import sqrt, pi
+sqrt(16) # 4.0
+
+import math as m
+sqrt(16) # 4.0
+
+from math import * # avoid - pollutes namespace, hides where names came from
+# my_module.py
+def greet():
+    print ('hello')
+
+if __name__ == '__main__':
+    # runs this when file is imported dir not when this is imported
+    greet()
+#=========================================================================
+#           Day -07     -    File I/O
+#=========================================================================
+with open('data.txt', 'r', encoding='utf-8') as f:
+    contents = f.read()
+    # or: for line in f:.................
+
+with open('data.txt', 'w', encoding='utf-8') as f:
+    f.write('Hello\n')
+#=========================================================================
+#           Day -07     -    Exception Handling
+#=========================================================================
+try:
+    value = int(input('Enter a number: '))
+except ValueError:
+    print("That was not a valid number.")
+except (TypeError, KeyError) as e:
+    print(f' Something else wrong: {e}')
+else:
+    print('ran only if no exception occured.')
+finally:
+    print('always runs - cleanup code goes here.')
+def withdraw(balance, amount):
+    if amount > balance:
+        raise ValueError("Insufficient funds")
+    return balance - amount
+
+class InsufficientFundsError(Exception):
+    pass

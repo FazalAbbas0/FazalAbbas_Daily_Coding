@@ -384,3 +384,72 @@ def withdraw(balance, amount):
 
 class InsufficientFundsError(Exception):
     pass
+#==========================================================================
+# Day 08     -    Classes & OOP, Dunder methods
+#=========================================================================
+#==========================================================================
+# Day 08     -    Define a Class
+#=========================================================================
+class Dog:
+    species = 'Canis familiaris' # class attribute
+
+    def __init__(self, name, age):
+        self.name = name # instance attribute
+        self.age = age # instance attribute
+
+    def describe(self):
+        return f'{self.name} is {self.age} years old'
+    
+fido = Dog('Fido', 3)
+fido.describe() # 'Fido is 3 years old'
+#==========================================================================
+# Day 08     -    Inheritance
+#=========================================================================
+class Animal:
+    def__init__(self, name):
+        self.name = name
+    def speak(self):
+        raise NotImplementedError
+
+class Cat(Animal):
+    def speadk(self):
+        return f'{self.name} says Meow!'
+    
+class puppy(Animal):
+    def__init__(self, name, age, bread):
+    super().___init__(name, age)
+    self.bread = bread
+# =========================================================================
+# Day 08     -    @ property, @ classmethod, @ staticmethod - 
+#=======================================================================
+class Circle:
+    def__init__(self, radius):
+        self._radius = radius
+    
+    @property
+    def area(self):
+        return 3.14 * self._radius ** 2
+    @classmethod
+    def from_diameter(cls, diameter):
+        return cls(diameter / 2)
+    @staticmethod
+    def is_valid_radius(value):
+
+        return value >= 0
+#==========================================================================================
+# Day 08     -    Dunder (magic) methods - How python objects talk to built-in operators
+#=========================================================================================
+class Vector:
+    def__init__(self, x, y):
+        self.x, self.y = x, y
+    
+    def__repr__(self):
+        return f'Vector({self.x}, {self.y})'
+
+    def__eq__(self, other):
+        return self.x == other.x and self.y == other.y
+    def___ad___(self,other):
+        return Vector(self.x + other.x, self.y + other.y)
+    def___len__(self):
+        return 2
+        

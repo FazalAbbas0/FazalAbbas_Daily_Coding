@@ -452,4 +452,63 @@ class Vector:
         return Vector(self.x + other.x, self.y + other.y)
     def___len__(self):
         return 2
+
+#==========================================================================================
+# Day 09     -    Iterators, Generators, Context Managers & Dataclasses
+#=========================================================================================
+# ==========================================================================================
+#               Day 09     -    Iterators - what for is actualy doing
+# ==========================================================================================
+s = 'abc'
+it = iter(s) # Call for you behind the scenes 
+next(it) # 'a'
+next(it) # 'b'
+next(it) # 'c'
+next(it) # raise StopIteration
+
+class Countdown:
+    def___init____self(start):
+    self.current = start
+    def___iter___(self):
+        return self
+    def___next___(self):
+    if self.current <= 0:
+        raise StopIteration
+    self.current -= 1
+        return self.current +1
+for n in Countdown (3):
+    print(n)
+# Generators the same idea for less code
+def Countdown (start):
+    while start > 0:
+        yield start
+        start -=1
+    for n in Countdown (3):
+        print(n)
+
+gen__expr = (x ** 2 for x in range (5))
+# Context Manager
+# What with is actually doing
+Class ManagedResource:
+    def___enter___(self):
+    print('acquiring resource')
+    return self
+    def___exit___(self, exc__type, exc__value, traceback):
+        print('releasing resource - runs even if an exception occured')
+        return false
+
+with ManagedResource() as r:
+    print('using resources')
+##=====================================================================================
+#                    Day 09 - Dataclasses - the bridge concept directly into pydantic
+#======================================================================================
+from dataclasses import dataclass
+@dataclass
+class product:
+    name: str
+    price: float
+    in_stock: bool = Ture
+p= product ('Celling Fan', 4500)
+in_stock = True
+
         

@@ -510,5 +510,67 @@ class product:
     in_stock: bool = Ture
 p= product ('Celling Fan', 4500)
 in_stock = True
+#========================================================================================
+#               Day 10 - Scope, PEP 8, Logging & Type Hints as a Real Discipline
+#========================================================================================
+# Scope the LEGB Rule
+x = 'global'
+def (outer):
+x = 'enclosing'
+def inner():
+    x = 'local'
+    print(x) # prints 'local'
+    inner()
+    print(x) # prints 'enclosing'
+outer()
+print(x) # prints 'global'
+
+counter = 0
+def increment():
+    global counter
+    counter+= 1
+
+#========================================================================================
+#               Day 10 - Logging - replacing print() debugging for good 
+#========================================================================================
+
+import logging
+logging.basicConfig(
+    level = logging.INFO,
+    format = '%(asctime)s - %(Levelname)s - %(message)s',
+)
+
+logging.debug('Detailed Diagnostic Info - hidden at info level')
+logging.info('Pipeline stage started')
+logging.warning('Pollinations API returned a slow response')
+logging.error('Failed to write output file')
+logging.critical('Pipeline halted - cannnot continue')
+#========================================================================================
+#             Day  10 - Type Hints - the bridge concept directly into pydantic
+#========================================================================================
+from typing import Optional, Union
+def get_user(user_id: int) -> dict:
+    return {'id': user_id}
+def search(query: str, limit: int = 10) -> list[dict]:
+
+def find_user(user_id: int) -> Optional[dict]:
+
+Number = Union[int, float]
+
+#========================================================================================
+#             Day  11 - Async/Await Primer
+#========================================================================================
+import asyncio
+async def fetch_data():
+    print('start fetching')
+    await asyncio.sleep(2)
+    print('done fetching')
+    return {'data': 123}
+
+async def main():
+    result = await fetch_data()
+    print(result)
+
+asyncio.run(main())
 
         
